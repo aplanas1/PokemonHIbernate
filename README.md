@@ -1,1 +1,4 @@
-# PokemonHIbernate
+# JPAMagazinesAnnotations
+JPAMagazinesAnnotations
+
+
