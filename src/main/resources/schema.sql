@@ -1,20 +1,18 @@
 CREATE TABLE tipos
 (
-    id_tipo integer NOT NULL,
     tipo character varying(30) NOT NULL,
-    CONSTRAINT pk_tipos PRIMARY KEY (id_tipo)
+    CONSTRAINT pk_tipos PRIMARY KEY (tipo)
 );
 
 CREATE TABLE habilidades
 (
-    id_habilidad integer NOT NULL,
     habilidad character varying(30) NOT NULL,
-    CONSTRAINT pk_habilidades PRIMARY KEY (id_habilidad)
+    CONSTRAINT pk_habilidades PRIMARY KEY (habilidad)
 );
 
 CREATE TABLE pokemons
 (
-    id_pokemon integer NOT NULL,
+    id_pokemon SERIAL NOT NULL,
     nombre character varying(30) NOT NULL,
     tipo1 character varying(30),
     tipo2 character varying(30),
