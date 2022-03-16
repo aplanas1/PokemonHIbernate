@@ -10,29 +10,25 @@ import java.util.List;
 @Table(name = "pokemons")
 public class Pokemon implements Serializable {
     @Id
+    @GeneratedValue
     @Column(name = "id_pokemon")
     int pokemonId;
-    @Column(name = "tipo1", length = 30)
-    String tipo1;
-    @Column(name = "tipo2", length = 30)
-    String tipo2;
-    @Column(name = "habilidad1", length = 30)
-    String habilidad1;
-    @Column(name = "habilidad2", length = 30)
-    String habilidad2;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo1")
+    Tipo tipo1;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo2")
+    Tipo tipo2;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "habilidad1")
+    Habilidad habilidad1;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "habilidad2")
+    Habilidad habilidad2;
     @Column(name = "descripcion", length = 1000)
     String descripcion;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tipo1", referencedColumnName = "id_tipo")
-    @JoinColumn(name = "tipo2", referencedColumnName = "id_tipo")
-    private List<Tipo> tipos = new ArrayList<Tipo>();
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "habilidad1", referencedColumnName = "id_habilidad")
-    @JoinColumn(name = "habilidad2", referencedColumnName = "id_habilidad")
-    private List<Habilidad> habilidades = new ArrayList<Habilidad>();
-
-    public Pokemon(int pokemonId, String tipo1, String tipo2, String habilidad1, String habilidad2, String descripcion) {
+    public Pokemon(int pokemonId, Tipo tipo1, Tipo tipo2, Habilidad habilidad1, Habilidad habilidad2, String descripcion) {
         this.pokemonId = pokemonId;
         this.tipo1 = tipo1;
         this.tipo2 = tipo2;
@@ -53,35 +49,35 @@ public class Pokemon implements Serializable {
         this.pokemonId = pokemonId;
     }
 
-    public String getTipo1() {
+    public Tipo getTipo1() {
         return tipo1;
     }
 
-    public void setTipo1(String tipo1) {
+    public void setTipo1(Tipo tipo1) {
         this.tipo1 = tipo1;
     }
 
-    public String getTipo2() {
+    public Tipo getTipo2() {
         return tipo2;
     }
 
-    public void setTipo2(String tipo2) {
+    public void setTipo2(Tipo tipo2) {
         this.tipo2 = tipo2;
     }
 
-    public String getHabilidad1() {
+    public Habilidad getHabilidad1() {
         return habilidad1;
     }
 
-    public void setHabilidad1(String habilidad1) {
+    public void setHabilidad1(Habilidad habilidad1) {
         this.habilidad1 = habilidad1;
     }
 
-    public String getHabilidad2() {
+    public Habilidad getHabilidad2() {
         return habilidad2;
     }
 
-    public void setHabilidad2(String habilidad2) {
+    public void setHabilidad2(Habilidad habilidad2) {
         this.habilidad2 = habilidad2;
     }
 

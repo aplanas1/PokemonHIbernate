@@ -3,9 +3,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-import controller.ArticleController;
-import controller.AuthorController;
-import controller.MagazineController;
+import controller.*;
 import database.ConnectionFactory;
 import model.*;
 import org.hibernate.HibernateException;
@@ -78,6 +76,9 @@ public class Main {
     ArticleController articleController = new ArticleController(c, entityManagerFactory);
     MagazineController magazineController = new MagazineController(c, entityManagerFactory);
 
+    TipoController tipoController = new TipoController(c, entityManagerFactory);
+    HabilidadController habilidadController = new HabilidadController(c, entityManagerFactory);
+
     Menu menu = new Menu();
     int opcio;
     opcio = menu.mainMenu();
@@ -144,6 +145,29 @@ public class Main {
           e.printStackTrace();
         }
         break;
+
+      case 2:
+        System.out.println("1!!");
+        try{
+          List<Tipo> tipos = tipoController.readTipoFile("src/main/resources/pokemons.csv");
+          for (Tipo r : tipos) {
+            try {
+              tipoController.addTipo(r);
+            } catch (Exception e) {
+            }
+          }
+          List<Habilidad> habilidads = habilidadController.readHabilidadFile("src/main/resources/pokemons.csv");
+          for (Habilidad r : habilidads) {
+            try {
+              habilidadController.addHabilidad(r);
+            } catch (Exception e) {
+            }
+
+          }
+
+        }catch (NumberFormatException | IOException e){
+          e.printStackTrace();
+        }
 
       default:
         System.out.println("Adeu!!");

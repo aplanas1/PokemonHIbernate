@@ -8,27 +8,15 @@ import java.io.Serializable;
 @Table(name = "tipos")
 public class Tipo implements Serializable {
     @Id
-    @Column(name = "id_tipo")
-    int tipoId;
     @Column(name = "tipo", length = 30)
     String tipo;
 
-    public Tipo(int tipoId, String tipo) {
-        this.tipoId = tipoId;
+    public Tipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public Tipo() {
+    public Tipo() {}
 
-    }
-
-    public int getTipoId() {
-        return tipoId;
-    }
-
-    public void setTipoId(int tipoId) {
-        this.tipoId = tipoId;
-    }
 
     public String getTipo() {
         return tipo;
@@ -41,8 +29,7 @@ public class Tipo implements Serializable {
     @Override
     public String toString() {
         return "Tipo{" +
-                "tipoId=" + tipoId +
-                ", tipo='" + tipo + '\'' +
+                "tipo='" + tipo + '\'' +
                 '}';
     }
 }

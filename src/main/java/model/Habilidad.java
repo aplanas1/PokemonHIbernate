@@ -8,13 +8,10 @@ import java.io.Serializable;
 @Table(name = "habilidades")
 public class Habilidad implements Serializable {
     @Id
-    @Column(name = "id_habilidad")
-    int habilidadId;
     @Column(name = "habilidad", length = 30)
     String habilidad;
 
-    public Habilidad(int habilidadId, String habilidad) {
-        this.habilidadId = habilidadId;
+    public Habilidad(String habilidad) {
         this.habilidad = habilidad;
     }
 
@@ -22,13 +19,6 @@ public class Habilidad implements Serializable {
 
     }
 
-    public int getHabilidadId() {
-        return habilidadId;
-    }
-
-    public void setHabilidadId(int habilidadId) {
-        this.habilidadId = habilidadId;
-    }
 
     public String getHabilidad() {
         return habilidad;
@@ -41,8 +31,7 @@ public class Habilidad implements Serializable {
     @Override
     public String toString() {
         return "Habilidad{" +
-                "habilidadId=" + habilidadId +
-                ", habilidad='" + habilidad + '\'' +
+                "habilidad='" + habilidad + '\'' +
                 '}';
     }
 }
