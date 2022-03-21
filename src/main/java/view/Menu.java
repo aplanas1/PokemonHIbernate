@@ -36,17 +36,17 @@ public class Menu {
             System.out.println(" \nMENU PRINCIPAL \n");
 
             System.out.println("1. Llenar tablas");
-            System.out.println("2. Filtrar por tipo");
-            System.out.println("3. Filtrar pokemon por contenido de su nombre");
-            System.out.println("4. Filtar pokemons por letra inicial");
-            System.out.println("5. Modificar el nombre de un pokemon");
-            System.out.println("6. Modificar el tipo de los pokemons que empiezen por una letra en concreto");
-            System.out.println("7. Eliminar un pokemon");
-            System.out.println("8. Eliminar pokemons por su tipo");
-            System.out.println("9. Añadir un tipo");
-            System.out.println("10. Añadir un pokemon");
-            System.out.println("11. Mostrar pokemons");
-            System.out.println("12. Mostrar tipos");
+            System.out.println("2. Mostrar pokemons");
+            System.out.println("3. Mostrar tipos");
+            System.out.println("4. Filtrar por tipo");
+            System.out.println("5. Filtrar pokemon por contenido de su nombre");
+            System.out.println("6. Filtar pokemons por letra inicial");
+            System.out.println("7. Modificar el nombre de un pokemon");
+            System.out.println("8. Modificar el tipo de los pokemons que empiezen por una letra en concreto");
+            System.out.println("9. Eliminar un pokemon");
+            System.out.println("10. Eliminar pokemons por su tipo");
+            System.out.println("11. Añadir un tipo");
+            System.out.println("12. Añadir un pokemon");
             System.out.println("13. Exit");
             System.out.println("Esculli opció: ");
             try {
@@ -75,7 +75,7 @@ public class Menu {
 
         for(;;){
             rolController.showTipos();
-            System.out.println("Elige el rol: ");
+            System.out.println("Elige el tipo (Ejemplo: Tipo normal): ");
             try {
                 opciones = br.readLine();
             } catch (NumberFormatException | IOException e) {

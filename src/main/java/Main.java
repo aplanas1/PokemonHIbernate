@@ -106,29 +106,34 @@ public class Main {
           e.printStackTrace();
         }
         break;
-
       case 2:
-        pokemonController.showPokemonPorRol();
+        pokemonController.showPokemon();
         break;
       case 3:
-        pokemonController.showPokemonCon();
+        tipoController.showTipos();
         break;
       case 4:
-        pokemonController.showPokemonPor();
+        pokemonController.showPokemonPorRol();
         break;
       case 5:
-        pokemonController.modificarPokemon();
+        pokemonController.showPokemonCon();
         break;
       case 6:
-        tipoController.modificarTipo();
+        pokemonController.showPokemonPor();
         break;
       case 7:
-        pokemonController.borrarPokemon();
+        pokemonController.modificarPokemon();
         break;
       case 8:
-        pokemonController.borrarPokemonPorRol();
+        tipoController.modificarTipo();
         break;
       case 9:
+        pokemonController.borrarPokemon();
+        break;
+      case 10:
+        pokemonController.borrarPokemonPorRol();
+        break;
+      case 11:
         System.out.println("----------------------");
         System.out.println("Crear Tipo");
         System.out.println("----------------------");
@@ -139,7 +144,7 @@ public class Main {
         tipoController.addTipo(new Tipo(tipe));
 
         break;
-      case 10:
+      case 12:
         System.out.println("----------------------");
         System.out.println("Crear Pokemon");
         System.out.println("----------------------");
@@ -162,12 +167,6 @@ public class Main {
 
         pokemonController.addPokemon(new Pokemon(nom, new Tipo(tipo1), new Tipo(tipo2), new Habilidad(habilidad1), new Habilidad(habilidad2), descripcion));
 
-        break;
-      case 11:
-        pokemonController.showPokemon();
-        break;
-      case 12:
-        tipoController.showTipos();
         break;
       case 13:
         System.exit(1);

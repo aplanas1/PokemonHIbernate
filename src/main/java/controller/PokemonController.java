@@ -119,7 +119,7 @@ public class PokemonController {
      * Este metodo sirve para mostrar pokemons por su tipo
      */
     public void showPokemonPorRol(){
-        String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
+        String tipo = menu.TipoMenu(connection,entityManagerFactory);
         String sql = "from Pokemon where tipo1='"+tipo+"'";
 
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -156,7 +156,7 @@ public class PokemonController {
      */
     public void showPokemonPor(){
         System.out.println("Escribe la letra de inicio: ");
-        String letra = sc.nextLine().toUpperCase(Locale.ROOT);
+        String letra = sc.nextLine();
 
         String sql = "from Pokemon where nombre like '" + letra + "%'";
 
@@ -190,7 +190,7 @@ public class PokemonController {
     public void modificarPokemon() {
         int id = menu.NombreMenu(connection,entityManagerFactory);
         System.out.println("Escribe el nuevo nombre: ");
-        String newNom = sc.nextLine().toUpperCase(Locale.ROOT);
+        String newNom = sc.nextLine();
 
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -219,7 +219,7 @@ public class PokemonController {
      * Este metodo sirve para borrar pokemons por su tipo
      */
     public void borrarPokemonPorRol() {
-        String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
+        String tipo = menu.TipoMenu(connection,entityManagerFactory);
         String sql = "from Pokemon where tipo1='" + tipo + "' OR tipo2='" + tipo + "'";
 
         EntityManager em = entityManagerFactory.createEntityManager();

@@ -102,7 +102,7 @@ public class TipoController {
      * Este metodo sirve para modificar un tipo
      */
     public void modificarTipo(){
-        String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
+        String tipo = menu.TipoMenu(connection,entityManagerFactory);
         System.out.println("Escribe la primera letra del campeon que quieras modificar ?");
         String letra = sc.nextLine().toUpperCase(Locale.ROOT);
         String sql = "from Pokemon where nombre like '" + letra + "%'";
