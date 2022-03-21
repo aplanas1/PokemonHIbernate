@@ -21,7 +21,9 @@ import view.Menu;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
+/**
+ * Esta es la clase principal dode se inicializa el programa
+ */
 public class Main {
 
   static SessionFactory sessionFactoryObj;
@@ -39,6 +41,10 @@ public class Main {
     }
   }
 
+  /**
+   * Este metodo sirve para crear el Manager de Entity
+   * @return
+   */
   public static EntityManagerFactory createEntityManagerFactory(){
     EntityManagerFactory emf;
     try {
@@ -124,10 +130,10 @@ public class Main {
         break;
       case 9:
         System.out.println("----------------------");
-        System.out.println("Crear Rol");
+        System.out.println("Crear Tipo");
         System.out.println("----------------------");
 
-        System.out.println("Rol:");
+        System.out.println("Tipo:");
         String tipe = sc.nextLine().toUpperCase(Locale.ROOT);
 
         tipoController.addTipo(new Tipo(tipe));
@@ -135,7 +141,7 @@ public class Main {
         break;
       case 10:
         System.out.println("----------------------");
-        System.out.println("Crear Campeon");
+        System.out.println("Crear Pokemon");
         System.out.println("----------------------");
 
         System.out.println("Nombre:");
@@ -151,7 +157,7 @@ public class Main {
         System.out.println("Elige una segunda habilidad:");
         String habilidad2 = menu.HabilidadMenu(c, entityManagerFactory).toUpperCase(Locale.ROOT);
 
-        System.out.println("Historia:");
+        System.out.println("Descripcion:");
         String descripcion = sc.nextLine();
 
         pokemonController.addPokemon(new Pokemon(nom, new Tipo(tipo1), new Tipo(tipo2), new Habilidad(habilidad1), new Habilidad(habilidad2), descripcion));
@@ -175,59 +181,3 @@ public class Main {
     }
   }
 }
-
-
-/*
-
-
-    static User userObj;
-    static Session sessionObj;
-    static SessionFactory sessionFactoryObj;
-
-    private static SessionFactory buildSessionFactory() {
-        // Creating Configuration Instance & Passing Hibernate Configuration File
-        Configuration configObj = new Configuration();
-        configObj.configure("hibernate.cfg.xml");
-
-        // Since Hibernate Version 4.x, ServiceRegistry Is Being Used
-        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
-
-        // Creating Hibernate SessionFactory Instance
-        sessionFactoryObj = configObj.buildSessionFactory(serviceRegistryObj);
-        return sessionFactoryObj;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(".......Hibernate Maven Example.......\n");
-        try {
-            sessionObj = buildSessionFactory().openSession();
-            sessionObj.beginTransaction();
-
-            for(int i = 101; i <= 105; i++) {
-                userObj = new User();
-                userObj.setUserid(i);
-                userObj.setUsername("Editor " + i);
-                userObj.setCreatedBy("Administrator");
-                userObj.setCreatedDate(new Date());
-
-                sessionObj.save(userObj);
-            }
-            System.out.println("\n.......Records Saved Successfully To The Database.......\n");
-
-            // Committing The Transactions To The Database
-            sessionObj.getTransaction().commit();
-        } catch(Exception sqlException) {
-            if(null != sessionObj.getTransaction()) {
-                System.out.println("\n.......Transaction Is Being Rolled Back.......");
-                sessionObj.getTransaction().rollback();
-            }
-            sqlException.printStackTrace();
-        } finally {
-            if(sessionObj != null) {
-                sessionObj.close();
-            }
-        }
-    }
-
-
-*/

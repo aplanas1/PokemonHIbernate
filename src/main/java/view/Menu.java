@@ -10,14 +10,24 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.Connection;
 
+/**
+ * Esta clase sirve para mostrar los menus
+ */
 public class Menu {
     private int option;
     private String opciones;
 
+    /**
+     *Este es un constructor y llama a su clase madre
+     */
     public Menu() {
         super();
     }
 
+    /**
+     *Este metodo sirve para mostar el menu principal del programa
+     * @return
+     */
     public int mainMenu() {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -55,9 +65,9 @@ public class Menu {
     }
 
     /**
-     * Este metodo sirve para mostrar un menu de rol
+     * Este metodo sirve para mostrar un menu de los tipos
      * @param c recibe la coneccion
-     * @return devuelve el rol que elegiste
+     * @return devuelve el tipo elegido
      */
     public String TipoMenu(Connection c, EntityManagerFactory entityManagerFactory){
         TipoController rolController = new TipoController(c, entityManagerFactory);
@@ -76,6 +86,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Este metodo sirve para mostrar un menu de las habilidades
+     * @param c recibe la coneccion
+     * @return devuelve la habilidad elegida
+     */
     public String HabilidadMenu(Connection c, EntityManagerFactory entityManagerFactory){
         HabilidadController habilidadController = new HabilidadController(c, entityManagerFactory);
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -93,9 +108,9 @@ public class Menu {
         }
     }
     /**
-     * Este metodo sirve para mostrar un menu de id y nombre de campeones
+     * Este metodo sirve para mostrar un menu sobre los pokemons, con sus id y nombres
      * @param c recibe la coneccion
-     * @return devuelve el nombre que elegiste
+     * @return devuelve el nombre del pokemon elegido
      */
     public int NombreMenu(Connection c, EntityManagerFactory entityManagerFactory){
         PokemonController campeonController = new PokemonController(c, entityManagerFactory);
