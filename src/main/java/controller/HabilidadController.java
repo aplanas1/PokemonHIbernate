@@ -84,4 +84,15 @@ public class HabilidadController {
 
         return listTokens;
     }
+
+    public void showHabilidades(){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        List<Habilidad> result = em.createQuery("from Habilidad ", Habilidad.class).getResultList();
+        for (Habilidad habilidad : result) {
+            System.out.println(habilidad.toString());
+        }
+        em.getTransaction().commit();
+        em.close();
+    }
 }

@@ -10,9 +10,11 @@ import java.util.List;
 @Table(name = "pokemons")
 public class Pokemon implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pokemon")
     int pokemonId;
+    @Column(name = "nombre")
+    String nombre;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tipo1")
     Tipo tipo1;
@@ -28,8 +30,8 @@ public class Pokemon implements Serializable {
     @Column(name = "descripcion", length = 1000)
     String descripcion;
 
-    public Pokemon(int pokemonId, Tipo tipo1, Tipo tipo2, Habilidad habilidad1, Habilidad habilidad2, String descripcion) {
-        this.pokemonId = pokemonId;
+    public Pokemon( String nombre, Tipo tipo1, Tipo tipo2, Habilidad habilidad1, Habilidad habilidad2, String descripcion) {
+        this.nombre = nombre;
         this.tipo1 = tipo1;
         this.tipo2 = tipo2;
         this.habilidad1 = habilidad1;
@@ -47,6 +49,14 @@ public class Pokemon implements Serializable {
 
     public void setPokemonId(int pokemonId) {
         this.pokemonId = pokemonId;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public Tipo getTipo1() {
@@ -93,10 +103,11 @@ public class Pokemon implements Serializable {
     public String toString() {
         return "Pokemon{" +
                 "pokemonId=" + pokemonId +
-                ", tipo1='" + tipo1 + '\'' +
-                ", tipo2='" + tipo2 + '\'' +
-                ", habilidad1='" + habilidad1 + '\'' +
-                ", habilidad2='" + habilidad2 + '\'' +
+                ", nombre=" + nombre +
+                ", tipo1=" + tipo1 +
+                ", tipo2=" + tipo2 +
+                ", habilidad1=" + habilidad1 +
+                ", habilidad2=" + habilidad2 +
                 ", descripcion='" + descripcion + '\'' +
                 '}';
     }

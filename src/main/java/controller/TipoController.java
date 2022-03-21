@@ -1,6 +1,7 @@
 package controller;
 
 import antlr.StringUtils;
+import model.Pokemon;
 import view.Menu;
 import model.Tipo;
 
@@ -10,10 +11,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class TipoController {
     private Connection connection;
@@ -64,6 +62,35 @@ public class TipoController {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         em.persist(tipo);
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void showTipos(){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+        List<Tipo> result = em.createQuery("from Tipo ", Tipo.class).getResultList();
+        for (Tipo tipo : result) {
+            System.out.println(tipo.toString());
+        }
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public void modificarTipo(){
+        String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
+        System.out.println("Escribe la primera letra del campeon que quieras modificar ?");
+        String letra = sc.nextLine().toUpperCase(Locale.ROOT);
+        String sql = "from Pokemon where nombre like '" + letra + "%'";
+
+        EntityManager em = entityManagerFactory.createEntityManager();
+        em.getTransaction().begin();
+
+        List<Pokemon> result = em.createQuery(sql, Pokemon.class).getResultList();
+        for (Pokemon pokemon : result) {
+            pokemon.setTipo1(new Tipo(tipo));
+            em.merge(pokemon);
+        }
         em.getTransaction().commit();
         em.close();
     }
