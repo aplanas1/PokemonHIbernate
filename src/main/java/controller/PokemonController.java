@@ -14,7 +14,7 @@ import java.sql.Connection;
 import java.util.*;
 
 /**
- * Esta clase sirve para controlar la tabla campeon situada en mi base de datos
+ * Esta clase sirve para controlar la tabla pokemons situada en la base de datos
  */
 public class PokemonController {
     private Connection connection;
@@ -38,7 +38,7 @@ public class PokemonController {
     /**
      * Este metodo sirve para leer el fichero, lo mete en una lista y lo devuelve
      * @param file rebie la ruta del fichero
-     * @return devuelve una lista de Campeon
+     * @return devuelve una lista de los pokemons
      * @throws IOException
      */
     public List<Pokemon> readPokemonFile(String file) throws IOException {
@@ -90,8 +90,8 @@ public class PokemonController {
     }
 
     /**
-     * Para añadir campeon
-     * @param pokemon recibe un campeon y lo añade
+     * Para añadir un pokemon a la base de datos
+     * @param pokemon pokemon a añadir
      */
     public void addPokemon(Pokemon pokemon) {
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -102,7 +102,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para mostrar campeones
+     * Este metodo sirve para mostrar pokemons
      */
     public void showPokemon(){
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -116,11 +116,11 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para mostrar campeones por roles
+     * Este metodo sirve para mostrar pokemons por su tipo
      */
     public void showPokemonPorRol(){
         String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
-        String sql = "from Pokemon where tipo1='" + tipo + "' OR tipo2='" + tipo + "'";
+        String sql = "from Pokemon where tipo1='"+tipo+"'";
 
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -133,7 +133,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para mostrar campeones con un texto especificado
+     * Este metodo sirve para mostrar pokemons con un texto especificado
      */
     public void showPokemonCon(){
         System.out.println("Escribe el texto a contener: ");
@@ -152,7 +152,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para mostrar campeones que empiezan por tal letra
+     * Este metodo sirve para mostrar pokemons que empiezan por una letra concreta
      */
     public void showPokemonPor(){
         System.out.println("Escribe la letra de inicio: ");
@@ -171,7 +171,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para mostrar las id y los nombres de campeon que hay
+     * Este metodo sirve para mostrar las id y los nombres del pokemon por su nombre
      */
     public void showPokemonNom(){
         EntityManager em = entityManagerFactory.createEntityManager();
@@ -185,7 +185,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para modificar el nombre de un campeon
+     * Este metodo sirve para modificar el nombre de un pokemon
      */
     public void modificarPokemon() {
         int id = menu.NombreMenu(connection,entityManagerFactory);
@@ -202,7 +202,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para borrar un campeon
+     * Este metodo sirve para borrar un pokemon
      */
     public void borrarPokemon() {
         int id = menu.NombreMenu(connection,entityManagerFactory);
@@ -216,7 +216,7 @@ public class PokemonController {
     }
 
     /**
-     * Este metodo sirve para borrar campeones por roles
+     * Este metodo sirve para borrar pokemons por su tipo
      */
     public void borrarPokemonPorRol() {
         String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);

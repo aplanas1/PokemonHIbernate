@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.util.*;
 
+/**
+ * Esta clase sirve para controlar la tabla habilidades situada en la base de datos
+ */
 public class TipoController {
     private Connection connection;
     private EntityManagerFactory entityManagerFactory;
@@ -20,6 +23,11 @@ public class TipoController {
     Menu menu = new Menu();
     List<Tipo> tipos;
 
+    /**
+     * Esto es el constructor de la clase
+     * @param connection recibe la coneccion hacia postgres
+     * @param entityManagerFactory recibe el entityManagerFactory
+     */
     public TipoController(Connection connection, EntityManagerFactory entityManagerFactory) {
         this.connection = connection;
         this.entityManagerFactory = entityManagerFactory;
@@ -27,6 +35,12 @@ public class TipoController {
         tipos = new ArrayList<>();
     }
 
+    /**
+     * Este metodo sirve para leer el fichero, lo mete en una lista y lo devuelve
+     * @param file rebie la ruta del fichero
+     * @return devuelve una lista de los tipos
+     * @throws IOException
+     */
     public List<Tipo> readTipoFile(String file) throws IOException {
 
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -58,6 +72,10 @@ public class TipoController {
         return tipos;
     }
 
+    /**
+     * Sirve para añadir un tipo a la base de datos
+     * @param tipo habilidad a añadir
+     */
     public void addTipo(Tipo tipo) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -66,6 +84,9 @@ public class TipoController {
         em.close();
     }
 
+    /**
+     * Este metodo sirve para mostrar los tipos
+     */
     public void showTipos(){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
@@ -77,6 +98,9 @@ public class TipoController {
         em.close();
     }
 
+    /**
+     * Este metodo sirve para modificar un tipo
+     */
     public void modificarTipo(){
         String tipo = menu.TipoMenu(connection,entityManagerFactory).toUpperCase(Locale.ROOT);
         System.out.println("Escribe la primera letra del campeon que quieras modificar ?");
@@ -95,6 +119,12 @@ public class TipoController {
         em.close();
     }
 
+    /**
+     * Este metodo sirve para dividir una frase en trozos depediendo del separador
+     * @param string recibe una frase
+     * @param delimiters recibe cual es el separador
+     * @return devuelve un array de palabras separadas.
+     */
     private static List<String> getTokenList(String string, String delimiters) {
 
         List<String> listTokens = new ArrayList<String>();

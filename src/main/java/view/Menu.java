@@ -35,18 +35,18 @@ public class Menu {
 
             System.out.println(" \nMENU PRINCIPAL \n");
 
-            System.out.println("1. Rellenar Tablas");
-            System.out.println("2. Mostrar los que sean ?");
-            System.out.println("3. Mostrar los campeones que tengan un ?");
-            System.out.println("4. Mostrar todos los campeon que empiezan por ?");
-            System.out.println("5. Modificar el nombre de un campeon");
-            System.out.println("6. Modificar el rols de los campeones que empiezan por ?");
-            System.out.println("7. Eliminar un campeon");
-            System.out.println("8. Eliminar campeones con el rol ?");
-            System.out.println("9. Añadir un rol");
-            System.out.println("10. Añadir un campeon");
-            System.out.println("11. Mostrar campeones");
-            System.out.println("12. Mostrar roles");
+            System.out.println("1. Llenar tablas");
+            System.out.println("2. Filtrar por tipo");
+            System.out.println("3. Filtrar pokemon por contenido de su nombre");
+            System.out.println("4. Filtar pokemons por letra inicial");
+            System.out.println("5. Modificar el nombre de un pokemon");
+            System.out.println("6. Modificar el tipo de los pokemons que empiezen por una letra en concreto");
+            System.out.println("7. Eliminar un pokemon");
+            System.out.println("8. Eliminar pokemons por su tipo");
+            System.out.println("9. Añadir un tipo");
+            System.out.println("10. Añadir un pokemon");
+            System.out.println("11. Mostrar pokemons");
+            System.out.println("12. Mostrar tipos");
             System.out.println("13. Exit");
             System.out.println("Esculli opció: ");
             try {
